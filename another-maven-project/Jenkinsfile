@@ -7,7 +7,7 @@ pipeline {
 		steps{
 			echo 'Project compile stage'
 			bat label: 'Compilation running',
-			script: '''cd another-maven-jetkin-pipline
+			script: '''cd another-maven-project
 			mvn compile'''
 	       	}
 	}
@@ -16,7 +16,7 @@ pipeline {
 	   steps {
 			echo 'Project Testing stage'
 			bat label: 'Test running',
-			script: '''cd another-maven-jetkin-pipline
+			script: '''cd another-maven-project
 			mvn test'''
 	       
        		}
@@ -31,7 +31,7 @@ pipeline {
        stage('SonarQube'){
 		steps{
 				bat label: '',
-				script: '''cd another-maven-jetkin-pipline
+				script: '''cd another-maven-project
 				mvn sonar:sonar \
 				-Dsonar.host.url=http://localhost:9000 \
 				-Dsonar.login=305ed8e903ac731c6f15efd07855b351073f05a1'''
@@ -42,7 +42,7 @@ pipeline {
 		steps{
 			echo 'Project packaging stage'
 			bat label: 'Project packaging',
-			script: '''cd another-maven-jetkin-pipline
+			script: '''cd another-maven-project
 			mvn package'''
 		}
 	} 		
